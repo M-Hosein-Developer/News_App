@@ -2,7 +2,7 @@ package com.example.news.ui.state
 
 import com.example.news.model.dataClass.NewsBySearchResp
 
-sealed class MainState {
+sealed class MainState() {
 
     object Idle : MainState()
     object Loading : MainState()
