@@ -1,4 +1,4 @@
-package com.example.news.ui.intent
+package com.example.news.ui.state
 
 import com.example.news.model.dataClass.NewsBySearchResp
 
