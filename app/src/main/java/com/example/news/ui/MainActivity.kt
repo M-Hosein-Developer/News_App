@@ -1,17 +1,18 @@
 package com.example.news.ui
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.example.news.ui.intent.MainIntent
-import com.example.news.ui.state.MainState
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.news.ui.feature.NewsSearch
 import com.example.news.ui.theme.NewsTheme
+import com.example.news.util.MyScreen
 import com.example.news.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -25,11 +26,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsTheme {
 
-
+                MainUi(viewModel)
 
             }
         }
     }
 }
 
+@Composable
+fun MainUi(viewModel: MainViewModel) {
+
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = MyScreen.NewsSearch.route){
+
+        composable(MyScreen.NewsSearch.route){
+            NewsSearch(viewModel)
+        }
+
+    }
+
+}
 
